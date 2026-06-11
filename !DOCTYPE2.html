@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Allergy QR Card</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#000,#0a3d91);
+    color:white;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:20px;
+}
+
+input,textarea,select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#2196f3;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+#card{
+    display:none;
+    margin-top:20px;
+    background:linear-gradient(135deg,#000,#b00020);
+    padding:20px;
+    border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Emergency Allergy QR Card</h1>
+
+<select id="language">
+<option>English</option>
+<option>Marathi</option>
+<option>Hindi</option>
+<option>Gujarati</option>
+<option>Tamil</option>
+<option>Bengali</option>
+</select>
+
+<input id="name" placeholder="Full Name">
+<input id="age" placeholder="Age">
+<input id="blood" placeholder="Blood Group">
+<input id="allergy" placeholder="Allergies">
+<input id="contact" placeholder="Emergency Contact">
+<input id="phone" placeholder="Phone Number">
+<textarea id="notes" placeholder="Medical Notes"></textarea>
+
+<button onclick="generateCard()">MAKE QR CODE</button>
+
+<div id="qrcode"></div>
+
+<div id="card">
+<h2>⚠️ Emergency Medical Card</h2>
+
+<p><b>Name:</b> <span id="cname"></span></p>
+<p><b>Age:</b> <span id="cage"></span></p>
+<p><b>Blood Group:</b> <span id="cblood"></span></p>
+<p><b>Allergies:</b> <span id="callergy"></span></p>
+<p><b>Emergency Contact:</b> <span id="ccontact"></span></p>
+<p><b>Phone:</b> <span id="cphone"></span></p>
+<p><b>Notes:</b> <span id="cnotes"></span></p>
+
+<h3>🚑 Emergency Numbers</h3>
+<p>Ambulance: 108</p>
+<p>Police: 112</p>
+<p>Fire: 101</p>
+
+</div>
+
+</div>
+
+<script>
+
+function generateCard(){
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical QR Generator</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: linear-gradient(blue, black);
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    input, select {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 220px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #qr {
+      margin-top: 20px;
+    }
+
+    .card {
+      background: linear-gradient(black, red);
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Medical QR Generator</h1>
+
+<div id="form">
+  <input id="name" placeholder="Name">
+  <input id="age" placeholder="Age">
+  <input id="allergy" placeholder="Allergies">
+  <input id="phone" placeholder="Phone">
+
+  <select id="lang">
+    <option>English</option>
+    <option>Hindi</option>
+    <option>Marathi</option>
+    <option>Gujarati</option>
+    <option>Tamil</option>
+    <option>Bengali</option>
+  </select>
+
+  <button onclick="generateQR()">MAKE QR CODE</button>
+  <div id="qr"></div>
+</div>
+
+<div id="card" class="card" style="display:none;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<script>
+function generateQR() {
+  let data = {
+    name: document.getElementById("name").value,
+    age: document.getElementById("age").value,
+    allergy: document.getElementById("allergy").value,
+    phone: document.getElementById("phone").value,
+    lang: document.getElementById("lang").value
+  };
+
+  let url = window.location.href + "#data=" + encodeURIComponent(JSON.stringify(data));
+
+  document.getElementById("qr").innerHTML = "";
+
+  new QRCode(document.getElementById("qr"), {
+    text: url,
+    width: 200,
+    height: 200
+  });
+
+  showCard(data);
+}
+
+function showCard(data) {
+  document.getElementById("card").style.display = "block";
+  document.getElementById("card").innerHTML = `
+    <h2>🚑 Emergency Medical Card</h2>
+    <p><b>Name:</b> ${data.name}</p>
+    <p><b>Age:</b> ${data.age}</p>
+    <p><b>Allergy:</b> ${data.allergy}</p>
+    <p><b>Phone:</b> ${data.phone}</p>
+    <p><b>Language:</b> ${data.lang}</p>
+    <hr>
+    <p>Ambulance: 108 / 112</p>
+    <p>Search Google Maps: "nearest hospital near me"</p>
+  `;
+}
+</script>
+
+</body>
+</html>
